@@ -16,10 +16,10 @@ import AddInfoSection from "./components/addInfoSection";
 const App = () => {
 
   const [personalInfo, setPersonalInfo] = useState({
-    name: "Jamie Tan",
-    phoneNumber: "8888-0654",
-    email: "jamie.tan@u.nus.edu",
-    website: "linkedin.com/in/jamie-tan"})
+    name: "Foh Cher Ern Don",
+    phoneNumber: "",
+    email: "don.foh@u.nus.edu",
+    website: "linkedin.com/in/don-foh"})
 
     const updatePersonalInfo = (ev) => {
       const value = ev.target.value
@@ -32,12 +32,27 @@ const App = () => {
   const [educationInfo, setEducationInfo] = useState(
     [{schoolName:"National University of Singapore", 
     id: uniqid(), 
-    start: "Aug 2013",
-    end: "May 2017",
-    course: "Bachelor of Arts, Major in Global Affairs",
+    start: "Aug 2019",
+    end: "Jan 2024",
+    present: true,
+    course: "Bachelor of Business Administration, Specialisation in Business Analytics",
     cap: "CAP: 4.5/5 (First Class Honours)",
-    descriptionList: [{id:uniqid(), text:"Recipient of NUS Dean Scholarship, a merit based scholarship awarded for four years"}]}]
+    descriptionList: [
+      {id:uniqid(), text:"Case competitions: SparkTank X 2021 (Semi-Finalist) | SGX NUS Sustainability 2021 | NUS-SGX Stock Pitch Competition"},
+      {id: uniqid(), text:"Projects: commentaR - An R Shiny App to automate sentiment analysis of any Youtube video’s comments "}]}]
   )
+
+  const updatePresentSchool = (ev) => {
+    const index = educationInfo.findIndex(school => school.id === ev.target.dataset.schoolid)
+
+    setEducationInfo(
+      update(educationInfo, {
+        [index] : {
+          present : {$set: educationInfo[index].present ? false : true}
+        }
+      })
+    )
+  }
 
  
   const addSchool = () => {
@@ -112,18 +127,30 @@ const App = () => {
   }
 
   const [workInfo, setWorkInfo] = useState(
-    [{company:"Samsung Electronics", 
+    [{company:"Saturday Kids", 
     id: uniqid(), 
-    start: "Jun 2015",
-    end: "Jul 2015",
-    jobTitle: "Global Launching Strategy Team Intern",
+    start: "May 2019",
+    end: "Jun 2019",
+    present: false,
+    jobTitle: "Teaching Assistant (Python) - Code in the Community",
     descriptionList: [
       {id:uniqid(), 
-      text:"Led cross-functional team to produce a video project of techniques to sales representatives in Southeast Asia by writing a script, producing the content, and preparing a presentation."},
+      text:"Conducted Python lessons as a substitute teacher, teaching a class of underprivileged 20-30 students aged between 13-16 basic programming skills "},
       {id:uniqid(),
-      text:"Developed design concepts, product mottos, and copyrighted descriptions to endorse the upcoming line of Flat Panel TVs by designing new product sales guides and training packets."}]}]
+      text:"Worked with Instructors to provide students with meaningful and prompt feedback on their progress, clarifying any Python-related doubts or confusion"}]}]
   )
 
+  const updatePresentWork = (ev) => {
+    const index = workInfo.findIndex(work => work.id === ev.target.dataset.workid)
+
+    setWorkInfo(
+      update(workInfo, {
+        [index] : {
+          present : {$set: workInfo[index].present ? false : true}
+        }
+      })
+    )
+  }
 
   const addWork = () => {
     setWorkInfo([
@@ -197,17 +224,46 @@ const App = () => {
   }
 
   const [ccaInfo, setCcaInfo] = useState(
-    [{organisation:"NUS International Relations & Political Association", 
+    [{organisation:"NUS Business Analytics Consulting Team", 
     id: uniqid(), 
-    start: "May 2013",
-    end: "May 2015",
-    position: "Co-founder & President",
+    start: "Aug 2021",
+    end: "May 2022",
+    present: true,
+    position: "Junior Analyst",
     descriptionList: [
       {id:uniqid(), 
-      text:"Coordinated inaugural panel of speakers representing eight different career paths to better eudcate and counsel over 30 members on unique career opportunities related to public diplomacy"},
+      text:"Explored data analytics techniques, including machine learning, data visualization, web scraping and time-series analysis "},
       {id: uniqid(),
-      text: "Initiated seminar to inform club members on successful tactics for writing resumes and cover letters, increasing student levels of knowledge and confidence to pursue competitive internships" }]}]
+      text: "Researched and presented data analytics techniques, helping to improve other members’ understanding" }]},
+    {organisation: "NUS Business Club",
+    id: uniqid(),
+    start: "Oct 2019",
+    end: "Sep 2020",
+    present: true,
+    position: "Logistics Head - NUS Business Camp",
+    descriptionList: [
+      {id:uniqid(), 
+      text:"Headed a committee of 9 to prepare logistics for the faculty camp with over 400 participants"},
+      {id: uniqid(),
+      text: "Conducted in-depth cost-benefit analysis through use of Excel functions to optimize budget allocation, reducing financial expenditure by ~20% from past year" },
+      {id: uniqid(),
+      text: "Planned and executed logistics plan to store and deliver required equipment on schedule "},
+      {id: uniqid(),
+       text: "Liaised with respective stakeholders to ensure smooth delivery of logistics"}
+    ]}]
   )
+
+  const updatePresentCca = (ev) => {
+    const index = ccaInfo.findIndex(cca => cca.id === ev.target.dataset.ccaid)
+
+    setCcaInfo(
+      update(ccaInfo, {
+        [index] : {
+          present : {$set: ccaInfo[index].present ? false : true}
+        }
+      })
+    )
+  }
 
 
   const addCca = () => {
@@ -282,8 +338,13 @@ const App = () => {
   }
 
   const [addInfo, setAddInfo] = useState([
-    {id: uniqid(), text: "Languages: English (native), German (conversational), Mandarin Chinese (beginner)"},
-    {id: uniqid(), text: "Skills: Adobe Photoshop, Illustrator, and InDesign; HTML and CSS; Microsoft Office."}])
+    {id: uniqid(), text: "Interests: Piano, basketball, fencing, reading"},
+    {id: uniqid(), text: "Programming Languages: Python, R, JavaScript, HTML, CSS, SQL, NoSQL, Ruby"},
+    {id: uniqid(), text: "Technical Skills: Data Analysis, Data Visualization, Web Scraping, Sentiment Analysis, Web Development"},
+    {id: uniqid(), text: "Design: Adobe Illustrator, Wireframing, Prototyping"},
+    {id: uniqid(), text: "Tools and Playforms: MongoDB, PostgreSQL, IBM SPSS, Microsoft Excel (Pivot Tables, VLOOKUP)"},
+    {id: uniqid(), text: "Languages: English, Malay, Mandarin/Hokkien"},
+    {id: uniqid(), text: "Relevant modules: NM2207 (Computational Media Literacy) | NM2103 (Quantitative Research Methods) | DAO2702 (Programming for Business Analytics) | DBA3702 (Descriptive Analytics with R) | IT3010 (Data Management for Business Analytics) | NM3221 (Mobile Interaction Design) | NM3239Y (Retrieving, Exploring and Analysing Data)"}])
 
   const addAddInfo = () => {
     setAddInfo([
@@ -317,6 +378,7 @@ const App = () => {
 
         <EducationDetailsInput 
           schoolList={educationInfo} 
+          updatePresent={updatePresentSchool}
           addSchool={addSchool} 
           deleteSchool={deleteSchool}
           updateSchool={updateSchool} 
@@ -327,6 +389,7 @@ const App = () => {
         <WorkDetailsInput
           workList={workInfo}
           addWork={addWork}
+          updatePresent={updatePresentWork}
           deleteWork={deleteWork}
           updateWork={updateWork} 
           addDescription={addWorkDescription} 
@@ -335,6 +398,7 @@ const App = () => {
 
         <CcaDetailsInput
           ccaList={ccaInfo}
+          updatePresent={updatePresentCca}
           addCca={addCca}
           deleteCca={deleteCca}
           updateCca={updateCca} 

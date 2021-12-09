@@ -1,15 +1,17 @@
 const EducationSection = (props) => {
     return(
         <div className="sectionWithItems">
-          <h2> Education </h2>
+          <h3> EDUCATION </h3>
           {props.schoolList.map(school => {
+            const startDate = new Date(school.start).toLocaleDateString("en-us", {year:"numeric", month:"short"})
+            const endDate = new Date(school.end).toLocaleDateString("en-us", {year:"numeric", month:"short"})
             return(
               <div className="sectionItem" key={school.id}>
                 <div className="itemHeader">
-                  <h3> {school.schoolName} </h3>
-                  <h3 className="dates"> 
-                    {new Date(school.start).toLocaleDateString("en-us", {year:"numeric", month:"short"})} to {new Date(school.end).toLocaleDateString("en-us", {year:"numeric", month:"short"})}
-                  </h3>
+                  <b> {school.schoolName} </b>
+                  <b className="dates"> 
+                    {startDate} to {(school.present ? "Present" : endDate)}
+                  </b>
                 </div>
                 <div className="itemSubheader">
                   <span> {school.course} </span>

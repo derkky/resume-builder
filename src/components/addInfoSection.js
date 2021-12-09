@@ -1,7 +1,7 @@
 const AddInfoSection = (props) => {
     return(
         <div className="addInfoSection">
-            <h2> Additional Info </h2>
+            <h3> ADDITIONAL INFORMATION </h3>
             <div className="itemDescription">
                 <ul>
                     {props.addInfoList.map(info => {

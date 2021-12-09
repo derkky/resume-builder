@@ -1,15 +1,17 @@
 const CcaSection = (props) => {
     return(
         <div className="sectionWithItems">
-          <h2> Co-Curricular Activities </h2>
+          <h3> CO-CURRICULAR ACTIVITIES </h3>
           {props.ccaList.map(cca => {
+            const startDate = new Date(cca.start).toLocaleDateString("en-us", {year:"numeric", month:"short"})
+            const endDate = new Date(cca.end).toLocaleDateString("en-us", {year:"numeric", month:"short"})
             return(
               <div className="sectionItem" key={cca.id}>
                 <div className="itemHeader">
-                  <h3> {cca.organisation} </h3>
-                  <h3 className="dates"> 
-                  {new Date(cca.start).toLocaleDateString("en-us", {year:"numeric", month:"short"})} to {new Date(cca.end).toLocaleDateString("en-us", {year:"numeric", month:"short"})}
-                  </h3>
+                  <b> {cca.organisation} </b>
+                  <b className="dates"> 
+                    {startDate} to {(cca.present ? "Present" : endDate)}
+                  </b>
                 </div>
                 <div className="itemSubheader">
                   <span> {cca.position} </span>

@@ -39,12 +39,21 @@ const WorkDetailsInput = (props) => {
                   onChange={props.updateWork}
                 />
                 <label> End Date </label>
+                <div className="endDateInput"> 
                 <input
-                  type="month"
-                  name="end"
-                  data-workid={work.id}
-                  onChange={props.updateWork}
+                    type="month"
+                    name="end"
+                    data-workid={work.id}
+                    onChange={props.updateWork}
                 />
+                <div>
+                    <input 
+                        type="checkbox"
+                        data-workid={work.id}
+                        onClick={props.updatePresent}/>
+                    <label> Present </label>
+                </div>
+              </div>
                 <DescriptionInput
                   id={work.id}
                   descriptionList={work.descriptionList}

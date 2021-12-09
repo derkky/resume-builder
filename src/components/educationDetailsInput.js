@@ -33,12 +33,21 @@ const EducationDetailsInput = (props) => {
                   onChange={props.updateSchool}
               />
               <label> End Date </label>
-              <input
-                  type="month"
-                  name="end"
-                  data-schoolid={school.id}
-                  onChange={props.updateSchool}
-              />
+              <div className="endDateInput"> 
+                <input
+                    type="month"
+                    name="end"
+                    data-schoolid={school.id}
+                    onChange={props.updateSchool}
+                />
+                <div>
+                    <input 
+                        type="checkbox"
+                        data-schoolid={school.id}
+                        onClick={props.updatePresent}/>
+                    <label> Present </label>
+                </div>
+              </div>
               <label> Course Title </label>
               <input
                   type="text"

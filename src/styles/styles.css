@@ -1,6 +1,7 @@
 * {
 	padding: 0;
 	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 label {
@@ -19,8 +20,6 @@ label {
 	align-items: center;
 	padding: 1em;
 	overflow: auto;
-	font-family: Arial, Helvetica, sans-serif;
-
 }
 
 .detailInput > * {
@@ -37,7 +36,27 @@ label {
 	display: flex;
 }
 
+.endDateInput {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+}
 
+.endDateInput > input {
+	flex-grow: 1;
+}
+
+.endDateInput > div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-left: 0.5em;
+}
+
+.endDateInput > div > label {
+	margin: 0;
+}
 
 .descriptionInput {
 	display: flex;
@@ -77,8 +96,9 @@ label {
 	margin-right: 1em;
 }
 
-.resume h2 {
-	background-color: gray;
+.resume h3 {
+	background-color: lightgray;
+	margin-top: 0.5em;
 }
 
 

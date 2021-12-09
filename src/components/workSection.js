@@ -1,15 +1,17 @@
 const WorkSection = (props) => {
     return(
         <div className="sectionWithItems">
-          <h2> Working Experience </h2>
+          <h3> WORKING EXPERIENCE </h3>
           {props.workList.map(work => {
+            const startDate = new Date(work.start).toLocaleDateString("en-us", {year:"numeric", month:"short"})
+            const endDate = new Date(work.end).toLocaleDateString("en-us", {year:"numeric", month:"short"})
             return(
               <div className="sectionItem" key={work.id}>
                 <div className="itemHeader">
-                  <h3> {work.company} </h3>
-                  <h3 className="dates"> 
-                    {new Date(work.start).toLocaleDateString("en-us", {year:"numeric", month:"short"})} to {new Date(work.end).toLocaleDateString("en-us", {year:"numeric", month:"short"})}
-                  </h3>
+                  <b> {work.company} </b>
+                  <b className="dates"> 
+                    {startDate} to {work.present ? "Present" : endDate}
+                  </b>
                 </div>
                 <div className="itemSubheader">
                   <span> {work.jobTitle} </span>

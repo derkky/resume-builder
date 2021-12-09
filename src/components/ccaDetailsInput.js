@@ -39,12 +39,21 @@ const CcaDetailsInput = (props) => {
                   onChange={props.updateCca}
                 />
                 <label> End Date </label>
+                <div className="endDateInput"> 
                 <input
-                  type="month"
-                  name="end"
-                  data-ccaid={cca.id}
-                  onChange={props.updateCca}
+                    type="month"
+                    name="end"
+                    data-ccaid={cca.id}
+                    onChange={props.updateCca}
                 />
+                <div>
+                    <input 
+                        type="checkbox"
+                        data-ccaid={cca.id}
+                        onClick={props.updatePresent}/>
+                    <label> Present </label>
+                </div>
+              </div>
                 <DescriptionInput
                   id={cca.id}
                   descriptionList={cca.descriptionList}
